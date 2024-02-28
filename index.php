@@ -1,5 +1,36 @@
 <?php
 
+
+function passworGenerator(){
+
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+
+    $charsLength = strlen($chars);
+   
+
+   
+    $password = '';
+
+    $length_pw = $_GET['number'];
+    
+    if($length_pw == 0 ) {
+        echo "Il parametro 'number' non è stato passato correttamente!";
+    }
+
+    
+    for ($i = 0; $i < $length_pw; $i++) {
+       
+        $random_char = $chars[rand(0, $charsLength - 1)];
+
+       
+        $password .= $random_char;
+    }
+
+    return $password;
+ }
+ 
+ $password = passworGenerator(10);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,18 +50,19 @@
         <form>
             <h1 class="text-center" style="color: #808A99;">Storng password Generator</h1>
             <h2 class="text-center">Genera una password sicura </h2>
-            <div class="mb-3 p-3 text-dark" style="background-color: #CFF4FC;">
-                <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                <!-- <input type="password" class="form-control" id="exampleInputPassword1"> -->
-                <p>Nessun parametro valido inserito</p>
+            <div class="mb-3 p-3 text-dark rounded my-3" style="background-color: #CFF4FC;">
+                <!-- <p>Nessun parametro valido inserito</p> -->
+                <span><?php echo $password;?></span>
             </div>
-            <div class="mb-3 form-check bg-light p-5 text-dark">
+            <div class="mb-3 form-check bg-light p-5 text-dark rounded">
                 <div>
                     <div class="d-flex justify-content-between mb-2">
                         <span>
                             Lunghezza Password:
                         </span>
-                        <input type="text" class="rounded border border-light-subtle">
+                        <form method="GET">
+                            <input type="text" id="number" name="number" class="rounded border border-light-subtle">
+                        </form>
 
                     </div>
                     <div class="d-flex justify-content-between mb-2">
@@ -39,13 +71,13 @@
                         </span>
                         <div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Si
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     No
                                 </label>
@@ -67,7 +99,6 @@
                         <label class="form-check-label" for="Check3">simboli</label>
                     </div>
                 </div>
-
                 <div>
                     <button type="submit" class="btn btn-primary">invia</button>
                     <button class="btn btn-secondary">Annulla</button>
