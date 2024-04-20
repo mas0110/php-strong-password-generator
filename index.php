@@ -1,13 +1,17 @@
 <?php
-include 'functions.php'
+header("Location: ./landing.php");
+
+include __DIR__ .
+    './functions.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>password genarator</title>
+    <title>Password Genarator</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet" 
@@ -16,23 +20,19 @@ include 'functions.php'
 </head>
 <body>
     <div class="container w-75 text-light p-5" style="background-color: #011532;">
-        <form>
+        <form action="functions.php" method="GET">
             <h1 class="text-center" style="color: #808A99;">Storng password Generator</h1>
             <h2 class="text-center">Genera una password sicura </h2>
-            <div class="mb-3 p-3 text-dark rounded my-3" style="background-color: #CFF4FC;">
-                <!-- <p>Nessun parametro valido inserito</p> -->
-                <span><?php echo $password;?></span>
-            </div>
+            <!-- <div class="mb-3 p-3 text-dark rounded my-3" style="background-color: #CFF4FC;"> -->
+                <!-- <span><//?php echo $password;?></span> -->
+            <!-- </div> -->
             <div class="mb-3 form-check bg-light p-5 text-dark rounded">
                 <div>
                     <div class="d-flex justify-content-between mb-2">
                         <span>
                             Lunghezza Password:
                         </span>
-                        <form method="GET">
-                            <input type="text" id="number" name="number" class="rounded border border-light-subtle">
-                        </form>
-
+                        <input type="text" id="number" name="number" class="rounded border border-light-subtle">
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span>
